@@ -1,3 +1,4 @@
+package com.cs336.pkg;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ public class ApplicationDB {
 	public Connection getConnection(){
 		
 		//Create a connection string
-		String connectionUrl = "jdbc:mysql://localhost:3306/nameofdb";
+		String connectionUrl = "jdbc:mysql://localhost:3306/cs336Group43";
 		Connection connection = null;
 		
 		try {
@@ -29,7 +30,7 @@ public class ApplicationDB {
 		}
 		try {
 			//Create a connection to your DB
-			connection = DriverManager.getConnection(connectionUrl,"root", "changethistoyourpassword");
+			connection = DriverManager.getConnection(connectionUrl,"root", "yourPassword");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
