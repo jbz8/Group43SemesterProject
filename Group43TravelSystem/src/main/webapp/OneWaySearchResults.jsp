@@ -41,13 +41,13 @@
 	if (!filterSelect.equals("no_filter")){
 		switch(filterSelect){
 		case "price_tier1":
-			str = str + " and Booking_Fee>=0 and Booking_Fee<150 ";
+			str = str + " and Price>=0 and Price<150 ";
 			break;
 		case "price_tier2":
-			str = str + " and Booking_Fee>=150 and Booking_Fee<300> ";
+			str = str + " and Price>=150 and Price<300> ";
 			break;
 		case "price_tier3":
-			str = str + " and Booking_Fee>=300 ";
+			str = str + " and Price>=300 ";
 			break;
 		case "no_stops":
 			str = str + " and stops=0 ";
@@ -74,10 +74,10 @@
 	if (!sortSelect.equals("no_sort")){
 		switch(sortSelect){
 		case "price_high_to_low":
-			str = str + " order by Booking_Fee desc ";
+			str = str + " order by Price desc ";
 			break;
 		case "price_low_to_high":
-			str = str + " order by Booking_Fee asc ";
+			str = str + " order by Price asc ";
 			break;
 		case "take_off_time":
 			str = str + " order by Departure_Time asc ";
@@ -111,17 +111,29 @@
 		
 		out.println("<label for='departure_date'> Leave on: </label> ");
 		out.println("<input type='text' id='departure_date' name='departure_date' value='" + 
-		result.getString("Departure_Date") + " at " + result.getString("Departure_Time") + "' readonly>");
+		result.getString("Departure_Date") +  "' readonly>");
 		out.println("<br>");
+		
+		out.println("<label for='departure_time'> Time of Flight: </label>" );
+		out.println("<input type='text' id='departure_time' name='departure_time' value='" + 
+		result.getString("Departure_Time") + "' readonly>");
+		out.println("<br>");
+		
 		
 		out.println("<label for='arrival_airport'> Arrival Airport: </label> ");
 		out.println("<input type='text' id='arrival_airport' name='arrival_airport' value='" + 
 		result.getString("Arrival_Airport") + "' readonly>");
 		out.println("<br>");
 		
+		
 		out.println("<label for='arrival_date'> Land on: </label> ");
 		out.println("<input type='text' id='arrival_date' name='arrival_date' value='" + 
-		result.getString("Arrival_Date") + " at " + result.getString("Arrival_Time") + "' readonly>");
+		result.getString("Arrival_Date") + "' readonly>");
+		out.println("<br>");
+		
+		out.println("<label for='arrival_time'> Land Time: </label> ");
+		out.println("<input type='text' id='arrival_time' name='arrival_time' value='" + 
+		result.getString("Arrival_Time") +  "' readonly>");
 		out.println("<br>");
 		
 		out.println("<label for='num_stops'> Number of Stops: </label> ");
@@ -149,9 +161,9 @@
 		result.getString("Flight_Class") + "' readonly>");
 		out.println("<br>");
 		
-		out.println("<label for='booking_fee'> Booking Fee: </label> ");
-		out.println("<input type='text' id='booking_fee' name='booking_fee' value='"+
-		result.getString("Booking_Fee") + "' readonly>");
+		out.println("<label for='price'> Price: </label> ");
+		out.println("<input type='text' id='price' name='price' value='"+
+		result.getString("Price") + "' readonly>");
 		out.println("<br>");
 		
 		
