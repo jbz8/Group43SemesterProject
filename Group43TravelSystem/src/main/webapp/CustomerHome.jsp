@@ -4,7 +4,7 @@
 	<html>
 	<head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Home</title>
 	</head>
 	<body>
 	<%String firstName = (String)session.getAttribute("Customer_First_Name");
@@ -26,15 +26,19 @@
             </div>
             <br>
             <div>
-                <a href="#">View Flight History</a>
+                <a href="CheckFlightHistory.jsp">View Flight History</a>
             </div>
 			<br>
             <div>
-                <a href="#">Check Upcoming Flights</a>
+                <a href="CheckUpcomingFlights.jsp">Check Upcoming Flights</a>
             </div>
             <br>
             <div>
-                <a href="#">Questions and Answers</a>
+                <a href="CheckWaitingList.jsp">My Waiting List</a>
+            </div>
+            <br>
+            <div>
+                <a href="QuestionsAndAnswersPage.jsp">Questions and Answers</a>
             </div>
             <br>
             <div>

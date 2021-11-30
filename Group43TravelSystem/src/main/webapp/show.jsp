@@ -59,7 +59,7 @@
 				}
 			}
 			else{
-				out.println("Invalid Username and/or password  <a href='login.jsp'>try again</a>");
+				out.println("Invalid Username and/or password  <a href='welcome_page.jsp'>try again</a>");
 			}
 		}
 		catch(Exception e){

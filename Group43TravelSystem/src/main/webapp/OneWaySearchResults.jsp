@@ -7,7 +7,7 @@
 <html>
 	<head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>One Way Flight Results</title>
 	</head>
 	<body>
 	<a href="OneWayFlightSearch.jsp">Back to Search</a>
@@ -144,11 +144,6 @@
 		out.println("<label for='seats_left'> Seats Left: </label> ");
 		out.println("<input type='text' id='seats_left' name='seats_left' value='" + 
 		result.getString("Seats_Left") + "' readonly>");
-		out.println("<br>");
-		
-		out.println("<label for='num_stops'> Number of Stops: </label> ");
-		out.println("<input type='text' id='num_stops' name='num_stops' value='" + 
-		result.getString("stops") + "' readonly>");
 		out.println("<br>");
 		
 		out.println("<label for='airline_id'> Airline: </label> ");

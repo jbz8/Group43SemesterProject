@@ -10,7 +10,7 @@
 <html>
 	<head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Confirmation</title>
 	</head>
 	<body>
 	<% 
@@ -48,66 +48,64 @@
 		fee = (float)45.50;
 	}
 	total_fare = (float)(fee+price);
-	
-	out.println("Flight number:" + flight_number);
-	out.println("<br>");
-	
-	out.println("Your ticket number:" + ticket_num);
-	out.println("<br>");
-	
-	out.println("Your seat number:" + seat_num);
-	out.println("<br>");
-	
-	out.println("Date of Purchase:" + localdate.toString().substring(0,10));
-	out.println("<br>");
-	
-	out.println("Time of Purchase:" +localtime.toString().substring(0,8));
-	out.println("<br>");
-	
-	out.println("Departure Airport:" + from);
-	out.println("<br>");
-	
-	out.println("Departure Day:" + departure_day);
-	out.println("<br>");
-	
-	out.println("Departure Time:" + departuretime);
-	out.println("<br>");
-	
-	out.println("Arrival Airport:" + to);
-	out.println("<br>");
-	
-	out.println("Landing Day:" + land_day);
-	out.println("<br>");
-	
-	out.println("Arrival Time:" + arrivaltime);
-	out.println("<br>");
-	
-	out.println("Ticket Class:" +ticket_cls);
-	out.println("<br>");
-	
-	out.println("Flight Price:" + price);
-	out.println("<br>");
-	
-	out.println("Company booking fee:" + fee);
-	out.println("<br>");
-	
-	out.println("Total fare:" + total_fare);
-	out.println("<br>");
-	
-	out.println(firstName);
-	out.println("<br>");
-	
-	out.println(lastName);
-	out.println("<br>");
-	
-	out.println(email);
-	out.println("<br>");
-	
-	out.println("Airline:" + airline);
-	out.println("<br>");
-	
-	
 	if (seat_num!=0){
+		
+		out.println("Flight number:" + flight_number);
+		out.println("<br>");
+		
+		out.println("Your ticket number:" + ticket_num);
+		out.println("<br>");
+		
+		out.println("Your seat number:" + seat_num);
+		out.println("<br>");
+		
+		out.println("Date of Purchase:" + localdate.toString().substring(0,10));
+		out.println("<br>");
+		
+		out.println("Time of Purchase:" +localtime.toString().substring(0,8));
+		out.println("<br>");
+		
+		out.println("Departure Airport:" + from);
+		out.println("<br>");
+		
+		out.println("Departure Day:" + departure_day);
+		out.println("<br>");
+		
+		out.println("Departure Time:" + departuretime);
+		out.println("<br>");
+		
+		out.println("Arrival Airport:" + to);
+		out.println("<br>");
+		
+		out.println("Landing Day:" + land_day);
+		out.println("<br>");
+		
+		out.println("Arrival Time:" + arrivaltime);
+		out.println("<br>");
+		
+		out.println("Ticket Class:" +ticket_cls);
+		out.println("<br>");
+		
+		out.println("Flight Price:" + price);
+		out.println("<br>");
+		
+		out.println("Company booking fee:" + fee);
+		out.println("<br>");
+		
+		out.println("Total fare:" + total_fare);
+		out.println("<br>");
+		
+		out.println(firstName);
+		out.println("<br>");
+		
+		out.println(lastName);
+		out.println("<br>");
+		
+		out.println(email);
+		out.println("<br>");
+		
+		out.println("Airline:" + airline);
+		out.println("<br>");
 		
 		//update Ticket table , AssociatedWith table , and update the number of seats left on the flight.
 		ApplicationDB db = new ApplicationDB();	
@@ -165,11 +163,32 @@
 		ps3.executeUpdate();
 		
 		con.close();
+		out.println("<br>");
 		out.println("Check your details again in home page");
 		out.println("<a href='CustomerHome.jsp'>Home Page</a>");	
 	}
 	else{
-		out.println("Will be put on the waiting list.");
+		out.println("<br>");
+		out.println("You will be put on the waiting list.");
+		out.println("If a spot becomes available we will send you a notification");
+		out.println("<a href='CustomerHome.jsp'>Return Home</a>");
+		
+		ApplicationDB db = new ApplicationDB();	
+		Connection con = db.getConnection();
+		
+		//Create a SQL statement
+		Statement stmt = con.createStatement();
+		PreparedStatement ps;	
+		
+		String insert = "insert into Waiting_List(email,Flight_number) values(?,?)";
+		ps = con.prepareStatement(insert);
+		ps.setString(1,(String)session.getAttribute("Customer_Email"));
+		ps.setInt(2,flight_number);
+		ps.executeUpdate();
+		con.close();
+		
+		
+		
 	}
 	}
 	catch (Exception e){
